@@ -1,26 +1,195 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #07090d;
+  --ink-2: #0d1117;
+  --ink-3: #141a22;
+  --line: rgba(236, 235, 228, 0.1);
+  --bone: #ecebe4;
+  --bone-2: #dddbd0;
+  --mute: #8b94a1;
+  --volt: #d4ff3a;
+  --alert: #ff5a36;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-bone: var(--bone);
+  --color-bone-2: var(--bone-2);
+  --color-mute: var(--mute);
+  --color-volt: var(--volt);
+  --color-alert: var(--alert);
+  --font-sans: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-code), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--ink);
+  color-scheme: dark;
+}
+
+html.is-loading {
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--volt);
+  color: var(--ink);
+}
+
+/* subtle film grain over everything */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a323d;
+  border-radius: 8px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--volt);
+  outline-offset: 3px;
+}
+
+/* ---------- utilities ---------- */
+.mono {
+  font-family: var(--font-code), ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.display {
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* hero circuit field */
+.field-grid,
+.field-glow {
+  position: absolute;
+  inset: 0;
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.field-grid {
+  background-image:
+    linear-gradient(to right, rgba(236, 235, 228, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(236, 235, 228, 0.06) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 85%);
+}
+.field-glow {
+  background-image:
+    linear-gradient(to right, rgba(212, 255, 58, 0.55) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 255, 58, 0.55) 1px, transparent 1px);
+  mask-image: radial-gradient(circle 260px at var(--mx, 70%) var(--my, 40%), #000 0%, transparent 100%);
+}
+
+/* lifecycle: pinned layout only when JS says so */
+.proc-pinned {
+  height: 100svh;
+  padding-block: 5rem 1.5rem;
+}
+.proc-pinned .proc-steps {
+  height: min(26rem, 52svh);
+}
+.proc-node[data-on="false"] text {
+  opacity: 0.35;
+}
+.proc-pinned .proc-step {
+  position: absolute;
+  inset: 0;
+}
+.proc-pinned .proc-step:not(:first-child) {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 999px;
+  padding: 1rem 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition:
+    background 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+  will-change: transform;
+}
+.btn-volt {
+  background: var(--volt);
+  color: var(--ink);
+}
+.btn-volt:hover {
+  background: var(--bone);
+}
+.btn-ghost {
+  border: 1px solid rgba(236, 235, 228, 0.25);
+  color: var(--bone);
+}
+.btn-ghost:hover {
+  border-color: var(--volt);
+  color: var(--volt);
+}
+
+.cam-scene * {
+  vector-effect: non-scaling-stroke;
+}
+
+/* camera scan */
+@keyframes rec-blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0.15;
+  }
+}
+.rec-dot {
+  animation: rec-blink 1.4s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rec-dot {
+    animation: none;
+  }
 }
