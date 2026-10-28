@@ -89,6 +89,7 @@ export default function Nav() {
     <>
       <header
         ref={root}
+        data-site-nav
         className="fixed inset-x-0 top-0 z-50 border-b border-line bg-ink/70 backdrop-blur-xl"
       >
         <div ref={progress} className="absolute inset-x-0 bottom-[-1px] h-px origin-left bg-volt" />

@@ -1,4 +1,5 @@
 import Loader from "@/components/Loader";
+import PromoBanner from "@/components/PromoBanner";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
@@ -12,7 +13,8 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <>
+    <div className="site-with-promo">
+      <PromoBanner />
       <Loader />
       <Nav />
       <main>
@@ -26,6 +28,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

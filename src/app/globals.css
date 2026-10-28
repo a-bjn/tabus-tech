@@ -10,6 +10,13 @@
   --mute: #8b94a1;
   --volt: #d4ff3a;
   --alert: #ff5a36;
+  --promo-h: 2.75rem;
+}
+
+@media (max-width: 639px) {
+  :root {
+    --promo-h: 4.25rem;
+  }
 }
 
 @theme inline {
@@ -29,6 +36,7 @@
 html {
   background: var(--ink);
   color-scheme: dark;
+  font-size: 15px;
 }
 
 html.is-loading {
@@ -76,12 +84,31 @@ body::after {
   outline-offset: 3px;
 }
 
+/* promo strip (fixed above nav) */
+.promo-bar {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 60;
+  background: var(--volt);
+  color: var(--ink);
+  border-bottom: 1px solid rgba(7, 9, 13, 0.12);
+}
+
+.site-with-promo header[data-site-nav] {
+  top: var(--promo-h);
+}
+
+.site-with-promo .hero-offset-top {
+  padding-top: calc(var(--promo-h) + 7rem);
+}
+
 /* ---------- utilities ---------- */
 .mono {
   font-family: var(--font-code), ui-monospace, monospace;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.675rem;
 }
 
 .display {
@@ -142,9 +169,10 @@ body::after {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   border-radius: 999px;
-  padding: 1rem 1.6rem;
+  padding: 0.875rem 1.45rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   transition:

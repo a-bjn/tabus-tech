@@ -7,6 +7,15 @@ export const SITE = {
   area: "România",
 };
 
+/** Ofertă lansare — actualizează sau dezactivează când nu mai e valabilă. */
+export const PROMO = {
+  enabled: true,
+  message:
+    "Primii 100 de clienți: reducere 20% și mentenanță gratuită timp de 1 an.",
+  ctaLabel: "Profită acum",
+  ctaHref: "#contact",
+};
+
 export const NAV = [
   { id: "proces", label: "Proces" },
   { id: "servicii", label: "Servicii" },
