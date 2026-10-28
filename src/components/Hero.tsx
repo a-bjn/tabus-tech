@@ -12,16 +12,6 @@ const TRACES = [
   "M1440 520 H1260 L1200 460 H1000 L940 400 V0",
   "M700 900 V820 L760 760 H1000 L1060 820 H1440",
 ];
-const NODES: [number, number][] = [
-  [320, 280],
-  [680, 220],
-  [240, 580],
-  [580, 640],
-  [1120, 240],
-  [420, 360],
-  [1200, 460],
-  [760, 760],
-];
 
 function CircuitField() {
   return (
@@ -36,25 +26,6 @@ function CircuitField() {
       >
         {TRACES.map((d) => (
           <path key={d} d={d} stroke="rgba(236,235,228,.1)" strokeWidth="1.5" />
-        ))}
-        {TRACES.map((d, i) => (
-          <path
-            key={`p${i}`}
-            className="trace-pulse"
-            d={d}
-            pathLength={1000}
-            stroke="var(--volt)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeDasharray="46 954"
-            style={{ filter: "drop-shadow(0 0 6px rgba(212,255,58,.9))" }}
-          />
-        ))}
-        {NODES.map(([x, y]) => (
-          <g key={`${x}-${y}`} className="trace-node" style={{ transformOrigin: `${x}px ${y}px` }}>
-            <circle cx={x} cy={y} r="9" fill="var(--ink)" stroke="rgba(236,235,228,.25)" />
-            <circle cx={x} cy={y} r="3" fill="var(--volt)" />
-          </g>
         ))}
       </svg>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_60%,transparent_30%,var(--ink)_95%)]" />
@@ -109,10 +80,8 @@ function SchematicCard() {
               <text x={b.x + 13} y="204" fill="var(--bone)" fontSize="8.5" className="font-mono">
                 {b.rating}
               </text>
-              <circle className="sc-pulse" data-y0="140" data-y1="283" cx={b.x} cy="140" r="3.2" fill="var(--volt)" style={{ filter: "drop-shadow(0 0 5px var(--volt))" }} />
             </g>
           ))}
-          <circle className="sc-pulse" data-y0="14" data-y1="140" cx="160" cy="14" r="3.2" fill="var(--volt)" style={{ filter: "drop-shadow(0 0 5px var(--volt))" }} />
         </svg>
       </div>
     </div>
@@ -160,46 +129,6 @@ export default function Hero() {
         const play = () => intro.play();
         if (document.documentElement.dataset.ready) play();
         else window.addEventListener("tabus:ready", play, { once: true });
-
-        /* ---------- traveling pulses ---------- */
-        gsap.utils.toArray<SVGPathElement>(".trace-pulse", el).forEach((p, i) => {
-          gsap.fromTo(
-            p,
-            { strokeDashoffset: 0 },
-            {
-              strokeDashoffset: -1000,
-              duration: gsap.utils.random(5, 9),
-              ease: "none",
-              repeat: -1,
-              delay: i * 0.7,
-            },
-          );
-        });
-        gsap.to(".trace-node", {
-          scale: 1.35,
-          duration: 1.4,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-          stagger: { each: 0.35, from: "random" },
-        });
-
-        /* ---------- schematic card pulses ---------- */
-        gsap.utils.toArray<SVGCircleElement>(".sc-pulse", el).forEach((c, i) => {
-          gsap.fromTo(
-            c,
-            { attr: { cy: Number(c.dataset.y0) }, opacity: 0 },
-            {
-              attr: { cy: Number(c.dataset.y1) },
-              opacity: 1,
-              duration: 1.6,
-              ease: "power1.in",
-              repeat: -1,
-              repeatDelay: 0.4 + (i % 3) * 0.3,
-              delay: i * 0.25,
-            },
-          );
-        });
 
         /* ---------- cursor: glow, card tilt, oscilloscope ---------- */
         const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -284,7 +213,7 @@ export default function Hero() {
     >
       <CircuitField />
 
-      <div className="hero-content wrap relative z-10 flex min-h-[100svh] flex-col justify-between pb-10 pt-28">
+      <div className="hero-content hero-offset-top wrap relative z-10 flex min-h-[100svh] flex-col justify-between pb-10">
         <div className="flex flex-col gap-10">
           <p className="hero-fade mono flex flex-wrap items-center gap-x-4 gap-y-2 text-mute">
             <span className="flex items-center gap-2 text-volt">
