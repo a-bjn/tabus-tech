@@ -111,10 +111,57 @@ body::after {
   font-size: 0.675rem;
 }
 
+/* section eyebrow: 01 — Proces, 02 — Servicii, … */
+.section-label {
+  font-family: var(--font-code), ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+@media (min-width: 640px) {
+  .section-label {
+    font-size: 0.9375rem;
+  }
+}
+
 .display {
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.92;
+}
+
+/* project cards: current flowing along the line-art on hover */
+.pj-flow {
+  stroke-dasharray: 3 6;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .pj-flow {
+    animation: pj-dash 0.9s linear infinite;
+  }
+}
+@keyframes pj-dash {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+/* service demos: current along wires, pulsing loads */
+.sv-flow {
+  stroke-dasharray: 3 7;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sv-flow {
+    animation: pj-dash 0.9s linear infinite;
+  }
+  .sv-load {
+    animation: sv-pulse 2.4s ease-in-out infinite;
+  }
+}
+@keyframes sv-pulse {
+  50% {
+    opacity: 0.35;
+  }
 }
 
 .wrap {
@@ -148,10 +195,10 @@ body::after {
 /* lifecycle: pinned layout only when JS says so */
 .proc-pinned {
   height: 100svh;
-  padding-block: 5rem 1.5rem;
+  padding-block: calc(var(--promo-h) + 5.25rem) 2rem;
 }
 .proc-pinned .proc-steps {
-  height: min(26rem, 52svh);
+  height: min(25rem, 46svh);
 }
 .proc-node[data-on="false"] text {
   opacity: 0.35;
