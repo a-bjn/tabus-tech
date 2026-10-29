@@ -19,9 +19,9 @@ export const PROMO = {
 export const NAV = [
   { id: "proces", label: "Proces" },
   { id: "servicii", label: "Servicii" },
-  { id: "tablou", label: "Tablou live" },
-  { id: "cctv", label: "CCTV" },
+  { id: "proiecte", label: "Proiecte" },
   { id: "domenii", label: "Domenii" },
+  { id: "preturi", label: "Prețuri" },
 ];
 
 export const MARQUEE = [
@@ -75,7 +75,16 @@ export const STEPS = [
   },
 ];
 
-export const SERVICES = [
+export type ServiceVisualKind = "electric" | "protection" | "automation" | "cctv";
+
+export const SERVICES: {
+  n: string;
+  title: string;
+  kicker: string;
+  text: string;
+  points: string[];
+  visual: ServiceVisualKind;
+}[] = [
   {
     n: "01",
     title: "Instalații electrice",
@@ -87,7 +96,7 @@ export const SERVICES = [
       "Verificare și diagnosticare",
       "Remedierea defecțiunilor",
     ],
-    icon: "bolt",
+    visual: "electric",
   },
   {
     n: "02",
@@ -100,7 +109,7 @@ export const SERVICES = [
       "Tablouri de distribuție, comandă, automatizare",
       "Protecție la suprasarcină și scurtcircuit",
     ],
-    icon: "panel",
+    visual: "protection",
   },
   {
     n: "03",
@@ -113,7 +122,7 @@ export const SERVICES = [
       "Integrare senzori, relee, contactoare, PLC",
       "Mentenanță și optimizare",
     ],
-    icon: "gear",
+    visual: "automation",
   },
   {
     n: "04",
@@ -126,7 +135,7 @@ export const SERVICES = [
       "Stocare locală sau în rețea",
       "Acces la distanță și mentenanță",
     ],
-    icon: "eye",
+    visual: "cctv",
   },
 ];
 
@@ -167,6 +176,202 @@ export const SECTORS = [
       "PLC, senzori, monitorizare",
     ],
   },
+];
+
+export type ProjectArt = "substation" | "plc" | "home" | "retail" | "cctv";
+
+/**
+ * TODO: exemple provizorii, înlocuiește cu proiectele reale înainte de lansare
+ * (titlu, locație, specificații și rezultat).
+ */
+export const PROJECTS = [
+  {
+    id: "hala",
+    art: "substation" as ProjectArt,
+    kind: "Industrial · Medie tensiune",
+    title: "Alimentare nouă pentru hală de producție",
+    place: "Ilfov",
+    year: "2025",
+    result:
+      "Racord în medie tensiune, post de transformare 20/0,4 kV, tablou general de joasă tensiune și compensarea factorului de putere.",
+    specs: [
+      ["Putere", "630 kVA"],
+      ["Durată", "14 săptămâni"],
+      ["Scope", "Proiect + execuție"],
+    ],
+  },
+  {
+    id: "linie",
+    art: "plc" as ProjectArt,
+    kind: "Industrial · Automatizare",
+    title: "Automatizarea unei linii de ambalare",
+    place: "Prahova",
+    year: "2025",
+    result:
+      "Tablou de comandă cu PLC, variatoare pentru 12 motoare și vizualizare locală. Oprirea liniei redusă la minimum.",
+    specs: [
+      ["Motoare", "12"],
+      ["Durată", "6 săptămâni"],
+      ["Scope", "Execuție + PIF"],
+    ],
+  },
+  {
+    id: "vila",
+    art: "home" as ProjectArt,
+    kind: "Rezidențial",
+    title: "Instalație electrică completă, vilă de 280 mp",
+    place: "Cluj",
+    year: "2024",
+    result: "Tablou cu protecții diferențiale pe circuite, iluminat scenografic și supraveghere video discretă.",
+    specs: [
+      ["Putere", "22 kW"],
+      ["Durată", "5 săptămâni"],
+    ],
+  },
+  {
+    id: "retail",
+    art: "retail" as ProjectArt,
+    kind: "Comercial",
+    title: "Magazin de 1.200 mp: tablouri și iluminat",
+    place: "București",
+    year: "2024",
+    result: "Execuție în program redus, fără oprirea vânzărilor, cu documentație pentru recepție.",
+    specs: [
+      ["Putere", "85 kW"],
+      ["Durată", "4 săptămâni"],
+    ],
+  },
+  {
+    id: "depozit",
+    art: "cctv" as ProjectArt,
+    kind: "CCTV · Securitate",
+    title: "Supraveghere video pentru depozit logistic",
+    place: "Giurgiu",
+    year: "2025",
+    result: "Acoperire completă a perimetrului și a rampelor, înregistrare centralizată și acces de la distanță.",
+    specs: [
+      ["Camere", "32"],
+      ["Durată", "3 săptămâni"],
+    ],
+  },
+];
+
+/**
+ * TODO: prețuri orientative provizorii, înlocuiește cu tarifele reale înainte de lansare.
+ * `price: null` afișează „La ofertă”.
+ */
+export const PRICING = [
+  {
+    id: "electric",
+    label: "Instalații electrice",
+    note: "Preț orientativ pentru lucrare completă: proiect, materiale standard, manoperă și punere în funcțiune.",
+    plans: [
+      {
+        name: "Apartament",
+        price: 4500,
+        unit: "lei",
+        blurb: "Instalație nouă sau refăcută pentru 2–3 camere.",
+        features: ["Tablou cu protecții diferențiale", "Circuite de iluminat și prize", "Verificări și documentație", "Garanție 24 de luni"],
+        featured: false,
+      },
+      {
+        name: "Casă / vilă",
+        price: 12000,
+        unit: "lei",
+        blurb: "Instalație completă, de la tabloul general la ultimul circuit.",
+        features: [
+          "Proiect și scheme monofilare",
+          "Tablou general și tablouri pe nivel",
+          "Iluminat, forță și priză de pământ",
+          "Verificări și documentație",
+          "Garanție 24 de luni",
+        ],
+        featured: true,
+      },
+      {
+        name: "Comercial / industrial",
+        price: null,
+        unit: "",
+        blurb: "Spații comerciale, hale și obiective industriale, pe bază de proiect.",
+        features: [
+          "Releveu și calcul de sarcină",
+          "Medie și joasă tensiune",
+          "Tablouri de forță și comandă",
+          "Punere în funcțiune și documentație",
+        ],
+        featured: false,
+      },
+    ],
+  },
+  {
+    id: "cctv",
+    label: "CCTV",
+    note: "Preț orientativ cu camere, înregistrator, cablare și configurare incluse.",
+    plans: [
+      {
+        name: "Start",
+        price: 3200,
+        unit: "lei",
+        blurb: "Locuințe și spații mici.",
+        features: ["4 camere Full HD", "Înregistrator și hard disk", "Cablare și montaj", "Acces de pe telefon"],
+        featured: false,
+      },
+      {
+        name: "Standard",
+        price: 6500,
+        unit: "lei",
+        blurb: "Case, birouri și magazine.",
+        features: ["8 camere, interior și exterior", "Vedere pe timp de noapte", "Detecție de mișcare cu alerte", "Cablare, montaj și instruire"],
+        featured: true,
+      },
+      {
+        name: "Avansat",
+        price: 13000,
+        unit: "lei",
+        blurb: "Depozite, hale și perimetre extinse.",
+        features: ["16+ camere", "Înregistrare centralizată", "Acces la distanță securizat", "Proiect și punere în funcțiune"],
+        featured: false,
+      },
+    ],
+  },
+  {
+    id: "mentenanta",
+    label: "Mentenanță",
+    note: "Preț orientativ pe an, pentru instalații existente.",
+    plans: [
+      {
+        name: "Verificare anuală",
+        price: 600,
+        unit: "lei / an",
+        blurb: "O vizită pe an, ca să știi în ce stare e instalația.",
+        features: ["Verificarea tabloului și a protecțiilor", "Măsurători esențiale", "Raport scris", "Recomandări de remediere"],
+        featured: false,
+      },
+      {
+        name: "Standard",
+        price: 250,
+        unit: "lei / lună",
+        blurb: "Revizii periodice și intervenții prioritare.",
+        features: ["2 vizite pe an", "Intervenție prioritară", "Raport după fiecare vizită", "Reducere la remedieri"],
+        featured: true,
+      },
+      {
+        name: "Industrial",
+        price: null,
+        unit: "",
+        blurb: "Contract adaptat instalației și programului tău.",
+        features: ["Plan de mentenanță preventivă", "Timp de răspuns stabilit prin contract", "Diagnosticare și remediere", "Asistență tehnică dedicată"],
+        featured: false,
+      },
+    ],
+  },
+];
+
+export const INCLUDED = [
+  "Vizită și ofertă fără costuri",
+  "Proiect și documentație tehnică",
+  "Garanție pentru lucrare",
+  "Un singur responsabil, de la început la final",
 ];
 
 export const LOADS = [

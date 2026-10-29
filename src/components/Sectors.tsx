@@ -3,7 +3,8 @@
 import { useRef, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { SECTORS } from "@/data/site";
-import { Reveal, useFadeIn } from "./Motion";
+import { useFadeIn } from "./Motion";
+import SectionIntro from "./SectionIntro";
 
 export default function Sectors() {
   const root = useRef<HTMLElement>(null);
@@ -71,10 +72,10 @@ export default function Sectors() {
       </div>
 
       <div className="wrap relative">
-        <p className="mono mb-4 text-volt">05 — Domenii de activitate</p>
-        <Reveal as="h2" className="display max-w-4xl text-[clamp(2.4rem,5.8vw,5.4rem)]">
-          Rezidențial, comercial sau industrial. Aceeași rigoare.
-        </Reveal>
+        <SectionIntro
+          label="04 — Domenii de activitate"
+          title="Rezidențial, comercial sau industrial. Aceeași rigoare."
+        />
 
         <div
           ref={list_}

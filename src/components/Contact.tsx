@@ -63,7 +63,7 @@ export default function Contact() {
 
       <div className="wrap relative grid gap-16 lg:grid-cols-[1fr_1fr] lg:gap-24">
         <div>
-          <p className="mono mb-4 text-ink/60">06 — Contact</p>
+          <p className="section-label mb-4 text-ink/60">06 — Contact</p>
           <Reveal as="h2" className="display text-[clamp(3rem,8vw,7.5rem)]">
             Dăm drumul la curent?
           </Reveal>

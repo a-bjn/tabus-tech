@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, NO_MOTION, useGSAP } from "@/lib/gsap";
 import { CAMERAS } from "@/data/site";
-import { Reveal, useFadeIn } from "./Motion";
 
 type SceneId = (typeof CAMERAS)[number]["scene"];
 
@@ -159,19 +158,13 @@ function CameraView({
   );
 }
 
-const FEATURES = [
-  ["Proiectare", "Amplasarea camerelor în funcție de unghiuri, lumină și zonele care contează."],
-  ["Instalare", "Camere, cablare, echipamente de înregistrare — montaj curat și etichetat."],
-  ["Stocare", "Înregistrări păstrate local sau în rețea, în funcție de nevoia obiectivului."],
-  ["Acces la distanță", "Imaginile pot fi vizualizate de oriunde, configurat sigur, plus mentenanță."],
-];
 
-export default function Cctv() {
-  const root = useRef<HTMLElement>(null);
+/** Security monitor with a switchable camera channel and a thumbnail strip. */
+export default function CameraMonitor() {
+  const root = useRef<HTMLDivElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [now, setNow] = useState("");
-  useFadeIn(root);
 
   useEffect(() => {
     const fmt = () =>
@@ -183,7 +176,7 @@ export default function Cctv() {
         minute: "2-digit",
         second: "2-digit",
       });
-    const t = setInterval(() => setNow(fmt()), 250);
+    const t = setInterval(() => setNow(fmt()), 500);
     return () => clearInterval(t);
   }, []);
 
@@ -202,59 +195,28 @@ export default function Cctv() {
   const cam = CAMERAS[active];
 
   return (
-    <section id="cctv" ref={root} className="relative bg-ink-2 py-28 sm:py-36">
-      <div className="wrap">
-        <div className="mb-12 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-end">
-          <div>
-            <p className="mono mb-4 text-volt">04 — CCTV & securitate video</p>
-            <Reveal as="h2" className="display text-[clamp(2.4rem,5.8vw,5.4rem)]">
-              Vezi tot ce contează. De oriunde.
-            </Reveal>
-          </div>
-          <p data-fade className="max-w-md text-lg leading-relaxed text-bone/70 lg:justify-self-end">
-            Sisteme de supraveghere proiectate pentru obiectivul tău, nu pachete standard. Alege o cameră și
-            vezi cum arată un monitor de securitate.
-          </p>
-        </div>
-
-        <div data-fade className="grid gap-3 lg:grid-cols-[1fr_220px]">
-          <div className="overflow-hidden rounded-2xl border border-line">
-            <div ref={stage} className="aspect-[16/10] w-full sm:aspect-video">
-              <CameraView key={cam.id} cam={cam} now={now} />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-4 gap-3 lg:grid-cols-1">
-            {CAMERAS.map((c, i) => (
-              <button
-                key={c.id}
-                type="button"
-                onClick={() => setActive(i)}
-                aria-pressed={i === active}
-                aria-label={`Camera ${c.id}: ${c.name}`}
-                className={`relative aspect-video overflow-hidden rounded-xl border transition-all duration-300 ${
-                  i === active ? "border-volt" : "border-line opacity-60 hover:opacity-100"
-                }`}
-              >
-                <CameraView cam={c} compact now={now} />
-                <span className="mono absolute inset-x-0 bottom-0 hidden bg-gradient-to-t from-black/80 to-transparent px-3 pb-2 pt-6 text-left text-[0.6rem] text-bone lg:block">
-                  {c.name}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map(([t, d], i) => (
-            <div key={t} data-fade className="bg-ink-2 p-6 sm:p-8">
-              <span className="mono text-volt">0{i + 1}</span>
-              <h3 className="display mt-6 text-2xl">{t}</h3>
-              <p className="mt-3 leading-relaxed text-bone/60">{d}</p>
-            </div>
-          ))}
+    <div ref={root} className="flex flex-col gap-3">
+      <div className="overflow-hidden rounded-xl border border-line">
+        <div ref={stage} className="aspect-video w-full">
+          <CameraView key={cam.id} cam={cam} now={now} />
         </div>
       </div>
-    </section>
+      <div className="grid grid-cols-4 gap-3">
+        {CAMERAS.map((c, i) => (
+          <button
+            key={c.id}
+            type="button"
+            onClick={() => setActive(i)}
+            aria-pressed={i === active}
+            aria-label={`Camera ${c.id}: ${c.name}`}
+            className={`relative aspect-video overflow-hidden rounded-lg border transition-all duration-300 ${
+              i === active ? "border-volt" : "border-line opacity-60 hover:opacity-100"
+            }`}
+          >
+            <CameraView cam={c} compact now={now} />
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }
