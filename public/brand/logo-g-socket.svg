@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Priza</title>
+  <circle cx="32" cy="32" r="29" fill="#ecebe4"/>
+  <circle cx="32" cy="32" r="22" stroke="#07090d" stroke-opacity=".18" stroke-width="2"/>
+  <circle cx="22" cy="32" r="4.5" fill="#07090d"/>
+  <circle cx="42" cy="32" r="4.5" fill="#07090d"/>
+  <rect x="29" y="8" width="6" height="8" rx="3" fill="#07090d"/>
+  <rect x="29" y="48" width="6" height="8" rx="3" fill="#07090d"/>
+  <circle cx="32" cy="32" r="2" fill="#D4FF3A" stroke="#07090d" stroke-width="1.5"/>
+</svg>

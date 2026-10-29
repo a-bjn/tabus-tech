@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Fulger in doua tonuri</title>
+  <defs>
+    <clipPath id="l"><rect x="0" y="0" width="31" height="64"/></clipPath>
+    <clipPath id="r"><rect x="31" y="0" width="33" height="64"/></clipPath>
+  </defs>
+  <path clip-path="url(#l)" d="M37 4 L12 36 H28 L24 60 L52 26 H36 L44 4 Z" fill="#ecebe4" stroke="#ecebe4" stroke-width="2" stroke-linejoin="round"/>
+  <path clip-path="url(#r)" d="M37 4 L12 36 H28 L24 60 L52 26 H36 L44 4 Z" fill="#D4FF3A" stroke="#D4FF3A" stroke-width="2" stroke-linejoin="round"/>
+</svg>

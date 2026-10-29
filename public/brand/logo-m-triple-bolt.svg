@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Trei fulgere paralele</title>
+  <g stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 6 L14 30 H34 L16 58" stroke="#ecebe4" stroke-opacity=".4"/>
+    <path d="M40 6 L22 30 H42 L24 58" stroke="#ecebe4" stroke-opacity=".75"/>
+    <path d="M48 6 L30 30 H50 L32 58" stroke="#D4FF3A"/>
+  </g>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Fulger in hexagon</title>
+  <path d="M32 3 L57 17.5 V46.5 L32 61 L7 46.5 V17.5 Z" stroke="#ecebe4" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M36 11 L18 35 H29 L26 53 L46 28 H35 L40 11 Z" fill="#D4FF3A" stroke="#D4FF3A" stroke-width="2" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Transformator</title>
+  <defs>
+    <clipPath id="a"><circle cx="23" cy="32" r="17"/></clipPath>
+  </defs>
+  <circle cx="41" cy="32" r="17" fill="#D4FF3A" clip-path="url(#a)"/>
+  <circle cx="23" cy="32" r="17" stroke="#ecebe4" stroke-width="4"/>
+  <circle cx="41" cy="32" r="17" stroke="#ecebe4" stroke-width="4"/>
+</svg>

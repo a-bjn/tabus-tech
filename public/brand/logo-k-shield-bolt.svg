@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Scut cu fulger</title>
+  <path d="M32 3 L55 11 V32 C55 46 45 56 32 61 C19 56 9 46 9 32 V11 Z" stroke="#ecebe4" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M36 15 L21 35 H31 L28 49 L43 29 H33 L38 15 Z" fill="#D4FF3A" stroke="#D4FF3A" stroke-width="2" stroke-linejoin="round"/>
+</svg>

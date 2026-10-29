@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Fulger decupat in cerc</title>
+  <circle cx="32" cy="32" r="30" fill="#D4FF3A"/>
+  <path d="M36 10 L18 34 H29 L26 54 L46 28 H35 L40 10 Z" fill="#07090d" stroke="#07090d" stroke-width="2" stroke-linejoin="round"/>
+</svg>

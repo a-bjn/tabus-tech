@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Trei unde decalate</title>
+  <defs>
+    <clipPath id="c"><circle cx="32" cy="32" r="24"/></clipPath>
+    <path id="w" d="M-40 32 C-34 14 -24 14 -16 32 C-8 50 2 50 8 32 C14 14 24 14 32 32 C40 50 50 50 56 32 C62 14 72 14 80 32"/>
+  </defs>
+  <circle cx="32" cy="32" r="29" stroke="#ecebe4" stroke-opacity=".5" stroke-width="2.5"/>
+  <g clip-path="url(#c)" stroke-width="4" stroke-linecap="round" fill="none">
+    <use href="#w" transform="translate(-16 0)" stroke="#ecebe4" stroke-opacity=".45"/>
+    <use href="#w" transform="translate(16 0)" stroke="#ecebe4" stroke-opacity=".45"/>
+    <use href="#w" stroke="#D4FF3A"/>
+  </g>
+</svg>

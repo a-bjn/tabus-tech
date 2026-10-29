@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Fulger ca pista de circuit</title>
+  <path d="M42 6 L22 30 H42 L22 58" stroke="#ecebe4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="42" cy="6" r="5" fill="#D4FF3A"/>
+  <circle cx="22" cy="58" r="5" fill="#D4FF3A"/>
+</svg>
