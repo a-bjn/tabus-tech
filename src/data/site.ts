@@ -1,7 +1,8 @@
 export const SITE = {
-  name: "Tabus Tech",
+  name: "tabtech",
+  domain: "tabtech.ro",
   // TODO: înlocuiește cu datele reale de contact înainte de lansare.
-  email: "contact@tabus-tech.ro",
+  email: "contact@tabtech.ro",
   phone: "+40 700 000 000",
   phoneHref: "tel:+40700000000",
   area: "România",
@@ -19,9 +20,7 @@ export const PROMO = {
 export const NAV = [
   { id: "proces", label: "Proces" },
   { id: "servicii", label: "Servicii" },
-  { id: "proiecte", label: "Proiecte" },
   { id: "domenii", label: "Domenii" },
-  { id: "preturi", label: "Prețuri" },
 ];
 
 export const MARQUEE = [

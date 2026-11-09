@@ -25,7 +25,7 @@ export default function Footer() {
   );
 
   return (
-    <footer ref={root} className="relative overflow-hidden bg-ink pt-16">
+    <footer ref={root} className="relative bg-ink pt-16">
       <div className="wrap flex flex-wrap items-start justify-between gap-10">
         <div className="max-w-xs">
           <p className="text-lg font-semibold">Instalații electrice, automatizări și CCTV.</p>
@@ -56,10 +56,10 @@ export default function Footer() {
       </div>
 
       <div
-        className="foot-word display wrap select-none overflow-hidden whitespace-nowrap pb-4 pt-12 text-[clamp(3.5rem,17.5vw,20rem)] leading-[0.85]"
+        className="foot-word display wrap w-full min-w-0 select-none pb-4 pt-12 text-[clamp(2.5rem,11.5vw,13.5rem)] leading-[0.88] tracking-[-0.04em] whitespace-nowrap"
         aria-hidden
       >
-        {"tabus.tech".split("").map((c, i) => (
+        {SITE.domain.split("").map((c, i) => (
           <span key={i} className="inline-block overflow-hidden align-bottom">
             <span className={`foot-char inline-block ${c === "." ? "text-volt" : ""}`}>{c}</span>
           </span>

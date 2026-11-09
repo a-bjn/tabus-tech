@@ -52,7 +52,7 @@ export default function Hero() {
           .from(".hero-card-wrap", { autoAlpha: 0, x: 80, rotateY: -25, duration: 1.4 }, 0.5);
         const play = () => intro.play();
         if (document.documentElement.dataset.ready) play();
-        else window.addEventListener("tabus:ready", play, { once: true });
+        else window.addEventListener("tabtech:ready", play, { once: true });
 
         /* ---------- cursor: glow, card tilt ---------- */
         const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -101,7 +101,7 @@ export default function Hero() {
           gsap.ticker.remove(tick);
           el.removeEventListener("pointermove", onMove);
           el.removeEventListener("pointermove", onCardMove);
-          window.removeEventListener("tabus:ready", play);
+          window.removeEventListener("tabtech:ready", play);
         };
       });
 

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, NO_MOTION, REDUCED_MOTION, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { SITE } from "@/data/site";
 import { LogoMark } from "./Logo";
 
 /* ---------- palette (kept local so the illustration stays self-contained) ---------- */
@@ -133,7 +134,7 @@ export default function Loader() {
       const finish = () => {
         html.classList.remove("is-loading");
         html.dataset.ready = "true";
-        window.dispatchEvent(new Event("tabus:ready"));
+        window.dispatchEvent(new Event("tabtech:ready"));
         ScrollTrigger.refresh();
       };
 
@@ -271,7 +272,7 @@ export default function Loader() {
     >
       <div className="ld-fade flex items-center justify-between">
         <span className="flex items-center gap-3 font-bold">
-          <LogoMark className="h-7 w-7" /> tabus.tech
+          <LogoMark className="h-7 w-7" /> {SITE.domain}
         </span>
         <span className="mono text-mute">Se încarcă</span>
       </div>

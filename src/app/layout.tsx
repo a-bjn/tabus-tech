@@ -15,11 +15,11 @@ const code = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tabus Tech — Instalații electrice, automatizări și CCTV",
+  title: "tabtech — Instalații electrice, automatizări și CCTV",
   description:
     "Proiectare, execuție și mentenanță pentru instalații electrice de joasă și medie tensiune, tablouri, automatizări industriale și sisteme CCTV. Rezidențial și industrial.",
   openGraph: {
-    title: "Tabus Tech — Instalații electrice, automatizări și CCTV",
+    title: "tabtech — Instalații electrice, automatizări și CCTV",
     description:
       "De la proiect la punere în funcțiune și mentenanță: instalații electrice, tablouri, automatizări industriale și securitate video.",
     locale: "ro_RO",

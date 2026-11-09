@@ -1,3 +1,5 @@
+import { SITE } from "@/data/site";
+
 export function LogoMark({ className = "h-8 w-8" }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden>
@@ -9,11 +11,13 @@ export function LogoMark({ className = "h-8 w-8" }: { className?: string }) {
 }
 
 export function Wordmark() {
+  const [label, tld] = SITE.domain.split(".");
   return (
     <span className="flex items-center gap-2.5 font-bold tracking-tight">
       <LogoMark />
       <span className="text-lg leading-none">
-        tabus<span className="text-volt">.</span>tech
+        {label}
+        <span className="text-volt">.{tld}</span>
       </span>
     </span>
   );

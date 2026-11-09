@@ -24,7 +24,7 @@ export default function Nav() {
         });
         const play = () => intro.play();
         if (document.documentElement.dataset.ready) play();
-        else window.addEventListener("tabus:ready", play, { once: true });
+        else window.addEventListener("tabtech:ready", play, { once: true });
 
         // scroll progress bar
         gsap.fromTo(
@@ -50,7 +50,7 @@ export default function Nav() {
           },
           onLeaveBack: () => show.reverse(),
         });
-        return () => window.removeEventListener("tabus:ready", play);
+        return () => window.removeEventListener("tabtech:ready", play);
       });
       return () => mm.revert();
     },
@@ -94,7 +94,7 @@ export default function Nav() {
       >
         <div ref={progress} className="absolute inset-x-0 bottom-[-1px] h-px origin-left bg-volt" />
         <div className="wrap flex h-16 items-center justify-between">
-          <a href="#top" onClick={go("top")} aria-label="Tabus Tech - sus">
+          <a href="#top" onClick={go("top")} aria-label="tabtech - sus">
             <Wordmark />
           </a>
 

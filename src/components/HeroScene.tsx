@@ -170,7 +170,7 @@ export default function HeroScene() {
         /* start once the loader is gone */
         const play = () => tl.play(0);
         if (document.documentElement.dataset.ready) play();
-        else window.addEventListener("tabus:ready", play, { once: true });
+        else window.addEventListener("tabtech:ready", play, { once: true });
 
         /* click a phase to jump to it */
         const onPill = (e: Event) => {
@@ -183,7 +183,7 @@ export default function HeroScene() {
         pills.forEach((p) => p.addEventListener("click", onPill));
 
         return () => {
-          window.removeEventListener("tabus:ready", play);
+          window.removeEventListener("tabtech:ready", play);
           pills.forEach((p) => p.removeEventListener("click", onPill));
           tl.kill();
           spin.kill();

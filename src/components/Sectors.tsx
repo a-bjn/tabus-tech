@@ -73,7 +73,7 @@ export default function Sectors() {
 
       <div className="wrap relative">
         <SectionIntro
-          label="04 — Domenii de activitate"
+          label="03 — Domenii de activitate"
           title="Rezidențial, comercial sau industrial. Aceeași rigoare."
         />
 
